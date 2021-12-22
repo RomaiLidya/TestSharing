@@ -1,0 +1,42 @@
+# dependencies
+**/node_modules
+
+# testing
+**/coverage
+
+# production
+**/build
+
+# log directories
+**/logs
+
+# misc
+**/.DS_Store
+
+# env
+**/.env
+
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# editor files
+*workspace*
+
+# for vagrant
+.vagrant
+
+## Api
+**/vendor
+**/public/.htaccess
+**/public/images
+**storage/*.key
+**/debug.log
+**storage/framework
+
+## Client
+**/deploy/client/*
+**/deploy/api/*
+
+## Not Change
+**/client/.env.production
