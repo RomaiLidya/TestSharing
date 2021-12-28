@@ -10,7 +10,7 @@ class AbstractRepository
 {
     protected $model = null;
     
-    // List of validators
+    // List of validators  
     private $validators = [];
 
     public function __construct(Model $model)

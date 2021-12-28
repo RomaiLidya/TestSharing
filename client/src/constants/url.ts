@@ -36,6 +36,7 @@ export const WILAYAH_KABUPATEN_BASE_URL = (code: string) => `${WILAYAH_BASE_URL}
 export const WILAYAH_KECAMATAN_BASE_URL = (code: string) => `${WILAYAH_BASE_URL}/kecamatan/${code}`;
 
 export const ZONE_BASE_URL = `${BASE_URL}/zone`;
+export const ARTICLE_BASE_URL = `${BASE_URL}/article`;
 
 export const PRODUCT_BASE_URL = `${BASE_URL}/product`;
 export const GET_CODE_BASE_URL = `${PRODUCT_BASE_URL}/get-code`;
@@ -53,6 +54,8 @@ export const DELETE_STOCK_DETAIL_BASE_URL = (id: number) => `${STOCK_BASE_URL}/$
 
 export const STOCK_ITEM_BASE_URL = `${BASE_URL}/stock-item`;
 export const GET_PRODUCT_WAREHOUSE_BASE_URL = (id: number) => `${STOCK_ITEM_BASE_URL}/product/${id}`;
+
+export const REGIS_BASE_URL = `${BASE_URL}/regis`;
 
 export const CATEGORY_BASE_URL = `${BASE_URL}/category`;
 export const WAREHOUSE_BASE_URL = `${BASE_URL}/warehouse`;

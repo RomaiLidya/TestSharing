@@ -2,13 +2,15 @@
 
 namespace App\Hady\Repository;
 
+use App\Models\Article as AppArticle;
+use App\Models\LogActivity;
 use App\Orenda\Interfaces\IRepository;
-use App\Models\ProductItem as AppProductItem;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule; 
 use Illuminate\Validation\ValidationException;
 
-class ProductItem implements IRepository
+class Article implements IRepository
 {
     private $related;
     private $attributes;
@@ -28,14 +30,29 @@ class ProductItem implements IRepository
         return $this->related;
     }
 
+
+
+ 
+
+
+
+
+
+
+
+
+
     public function save()
     {
         $rules = [
-            'ProductId' => ['required', 'integer'],
-            'minimumItem' => ['integer'],
-            'bonusItem' => ['integer']
-        ];
-  
+            'title' => ['required', 'string'],
+                  ];
+
+        if ($this->related->exists) {
+            $rules['title'] = ['required', 'title', Rule::unique('Article', 'title')->ignore($this->related->id)];
+      
+        }
+
         $validator = Validator::make($this->attributes, $rules);
 
         if ($validator->fails()) {
@@ -45,13 +62,21 @@ class ProductItem implements IRepository
         $this->related->save();
     }
 
+
+
+
+
+
+
+
     public function delete()
     {
-        $this->related->update(['isDeleted' => true, 'deletedAt' =>  date('Y-m-d H:i:s')]);
+        $this->related->update(['isDeleted' => true, 'deletedAt' => date('Y-m-d H:i:s')]);
+      
     }
 
     public static function findOne($id)
     {
-        return new self(AppProductItem::where([['id', $id], ['isDeleted', false]])->firstOrFail());
+        return new self(AppArticle::where([['id', $id], ['isDeleted', false]])->firstOrFail());
     }
-}
+}   

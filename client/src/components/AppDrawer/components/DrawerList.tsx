@@ -52,13 +52,17 @@ const DrawerList: FC<Props> = props => {
             if (product.name === 'All Kategori') {
               return hasAccess(currentUserData, 'CATEGORIES');
             }
+            if (product.name === 'All Kategori') {
+              return hasAccess(currentUserData, 'CATEGORIES');
+            }
           })}
         />
       ) : (
         ''
       )}
 
-
+        <DrawerItem handleDrawerClose={handleDrawerClose} Icon={PaymentIcon} path='/article' label='Article' child={false} />
+   
      </List>
   );
 };

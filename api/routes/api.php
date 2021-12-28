@@ -37,6 +37,16 @@ Route::group(['prefix' => 'product', 'module' => 'PRODUCT'], function () {
     Route::delete('/image/{id}', ['as' => 'api.product.image', 'accessLevel' => 'DELETE-IMAGE', 'uses' => 'Api\ApiProductController@deleteImage']);
 });  
 
+// Article
+
+Route::group(['prefix' => 'article', 'module' => 'ARTICLE'], function () {
+    Route::get('/', ['as' => 'api.article', 'accessLevel' => 'ACCESS,VIEW', 'uses' => 'Api\ApiArticleController@index']);
+    Route::get('/{id}', ['as' => 'api.article.get_detail', 'accessLevel' => 'VIEW', 'uses' => 'Api\ApiArticleController@show']);
+    Route::post('/', ['as' => 'api.article.get_detail', 'accessLevel' => 'CREATE', 'uses' => 'Api\ApiArticleController@store']);
+    Route::delete('/{id}', ['as' => 'api.article.get_detail', 'accessLevel' => 'DELETE', 'uses' => 'Api\ApiArticleController@destroy']);
+
+});
+
 // Bank
 Route::group(['prefix' => 'bank', 'module' => 'BANK'], function () {
     Route::get('/', ['as' => 'api.bank.index', 'accessLevel' => 'ACCESS,VIEW', 'uses' => 'Api\ApiBankController@index']);

@@ -11,6 +11,14 @@ export const dummyProduct: ProductModel = {
   minimumStock: 0,
   image: '' 
 };
+export const dummyArticle: ArticleModel = {
+  id: 0,
+  title: '',
+  content: '',
+  category: '',
+  status:''
+};
+
 
 export const dummyCategory: CategoryModel = {
   id: 0,

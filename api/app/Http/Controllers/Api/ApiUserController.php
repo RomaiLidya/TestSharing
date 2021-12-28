@@ -88,7 +88,7 @@ class ApiUserController extends Controller
         $request->validate([
             'password' => 'string|required|min:6',
         ]);
-
+ 
         $model = User::findOrFail(Auth::user()->id);
         
         $model->password = Hash::make($request->input('password'));

@@ -16,6 +16,8 @@ import { CartProvider } from 'contexts/CartContext';
 import { isUserAuthenticated } from 'selectors';
 import { attachTokenToHeader, detachTokenFromHeader } from 'utils/AxiosUtils';
 import { GET_CURRENT_USER_URL } from 'constants/url';
+import ArticlePage from 'pages/ArticlePage';
+import ArticleDetailPage from 'pages/ArticlePageDetail';
 import 'react-quill/dist/quill.snow.css';
 
 const { REACT_APP_DRAWER_WIDTH = '240' } = process.env;
@@ -143,7 +145,10 @@ const App: React.FC = () => {
               <ConditionalRoute exact={true} path={'/post'} routeCondition={isLoggedIn} component={ProductPage} redirectTo={'/'} />
               <ConditionalRoute exact={true} path={'/post/detail'} routeCondition={isLoggedIn} component={ProductDetailPage} redirectTo={'/'} />
               <ConditionalRoute exact={true} path={'/kategori'} routeCondition={isLoggedIn} component={CategoryPage} redirectTo={'/'} />
-            </Switch>
+              <ConditionalRoute exact={true} path={'/article'} routeCondition={isLoggedIn} component={ArticlePage} redirectTo={'/'} />
+              <ConditionalRoute exact={true} path={'/article/detail'} routeCondition={isLoggedIn} component={ArticleDetailPage} redirectTo={'/'} />
+       
+              </Switch>
           </main>
         </div>
       </CartProvider>
