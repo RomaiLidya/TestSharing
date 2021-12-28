@@ -6,16 +6,40 @@ BackEnd Menggunakan Laravel
 username: admin@gmail.com
 password: P@ssw0rd
 
-Docker: Untuk membangun container pada database/ menjalankan database
+# Docker(OPTIONAL) atau bisa menggunakan xampp:
+Jika Menggunakan Docker
         cara penggunaan docker: cd/d/namaProject/deploy/docker
                                 docker-compose start
         cara cek database yang aktif: docker ps
 
-Reactjs: Cara menjalankannya
+# Reactjs: Cara menjalankannya
          cd client -> untuk masuk ke client/FE
          yarn start
          
-Laravel : Cara menjalankannya
-          Install laravel
-          cd api -> untuk menjalankan bagian BE
-          php artisan serve
+# PHP / Laravel API
+
+## 1. Commands
+
+Init Project
+```
+composer install
+```
+
+Start Services
+```
+php artisan serve
+```
+
+Start Project
+```
+php artisan serve
+```
+Add dev dependencies
+```
+composer install require-dev <DEPENDENCY> [<DEPENDENCY>]
+```
+
+Remove dependencies
+```
+composer uninstall <DEPENDENCY> [<DEPENDENCY>]
+```
