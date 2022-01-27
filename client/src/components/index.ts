@@ -10,7 +10,6 @@ import StatusPayment from './StatusPayment';
 import FormPasswordDialog from './FormPasswordDialog';
 import InvoicePlafonStatus from './InvoicePlafonStatus';
 import FormPinDialog from './FormPinDialog';
-import CardProduct from './CardProduct';
 
 export * from './Table';
 export * from './Dialog';
@@ -29,5 +28,4 @@ export {
   FormPasswordDialog,
   InvoicePlafonStatus,
   FormPinDialog,
-  CardProduct
 };

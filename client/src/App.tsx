@@ -3,22 +3,17 @@ import axios from 'axios';
 import clsx from 'clsx';
 import { Theme, makeStyles } from '@material-ui/core';
 import { Switch, Route } from 'react-router';
-import AccessPage from 'pages/AccessPage';
 import ConditionalRoute from 'components/ConditionalRoute';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
 import CategoryPage from 'pages/CategoryPage';
-import ProductPage from 'pages/ProductPage';
-import ProductDetailPage from 'pages/ProductDetailPage';
 import AppDrawer from 'components/AppDrawer';
 import { CurrentUserProvider } from 'contexts/CurrentUserContext';
-import { CartProvider } from 'contexts/CartContext';
 import { isUserAuthenticated } from 'selectors';
 import { attachTokenToHeader, detachTokenFromHeader } from 'utils/AxiosUtils';
 import { GET_CURRENT_USER_URL } from 'constants/url';
-import ArticlePage from 'pages/ArticlePage';
-import ArticleDetailPage from 'pages/ArticlePageDetail';
 import 'react-quill/dist/quill.snow.css';
+import Kategori from 'pages/Kategori';
 
 const { REACT_APP_DRAWER_WIDTH = '240' } = process.env;
 
@@ -50,7 +45,7 @@ const App: React.FC = () => {
   const [isAuthenticating, setAuthenticating] = useState(true);
   const [openDrawer, setOpenDrawer] = useState(true);
   const [openDrawerMobile, setOpenDrawerMobile] = useState<boolean>(false);
-  const [carts, setCarts] = useState<CartModel | null>(null);
+
 
   const isLoggedIn = isUserAuthenticated(CurrentUserData);
 
@@ -105,9 +100,7 @@ const App: React.FC = () => {
     getCurrentUserData();
   }, []);
 
-  const setCart = (cart: CartModel | null): void => {
-    setCarts(cart);
-  };
+
 
   return isAuthenticating ? null : (
     <CurrentUserProvider
@@ -117,12 +110,7 @@ const App: React.FC = () => {
         unsetCurrentUser,
       }}
     >
-      <CartProvider
-        value={{
-          cart: carts,
-          setCart,
-        }}
-      >
+     
         <div className={classes.root}>
           {isLoggedIn && (
             <nav>
@@ -141,17 +129,13 @@ const App: React.FC = () => {
             <Switch>
               <ConditionalRoute exact={true} path={'/'} routeCondition={!isLoggedIn} component={LoginPage} redirectTo={'/post'} />
               <ConditionalRoute exact={true} path={'/home'} routeCondition={isLoggedIn} component={HomePage} redirectTo={'/'} />
-              <ConditionalRoute exact={true} path={'/access'} routeCondition={isLoggedIn} component={AccessPage} redirectTo={'/'} />
-              <ConditionalRoute exact={true} path={'/post'} routeCondition={isLoggedIn} component={ProductPage} redirectTo={'/'} />
-              <ConditionalRoute exact={true} path={'/post/detail'} routeCondition={isLoggedIn} component={ProductDetailPage} redirectTo={'/'} />
               <ConditionalRoute exact={true} path={'/kategori'} routeCondition={isLoggedIn} component={CategoryPage} redirectTo={'/'} />
-              <ConditionalRoute exact={true} path={'/article'} routeCondition={isLoggedIn} component={ArticlePage} redirectTo={'/'} />
-              <ConditionalRoute exact={true} path={'/article/detail'} routeCondition={isLoggedIn} component={ArticleDetailPage} redirectTo={'/'} />
-       
+                  <ConditionalRoute exact={true} path={'/categori'} routeCondition={isLoggedIn} component={Kategori} redirectTo={'/'} />
+           
               </Switch>
           </main>
         </div>
-      </CartProvider>
+  
     </CurrentUserProvider>
   );
 };
